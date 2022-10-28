@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrape NJ Realtors</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background: grey;
+        }
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            flex-direction: column;
+        }
+        .header-banner {
+            height: 50px;
+            width: 100%;
+            padding: 20px;
+            background-color: black;
+        }
+        .loader {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+        }
+        .loader::after {
+            content: " ";
+            display: block;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            border-color: #fff transparent #fff transparent;
+            animation: rotation 1.2s linear infinite;
+        }
+        @keyframes rotation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        } 
+    </style>
+</head>
+<body>
+    <div class="header-banner">
+        <img src="https://img1.wsimg.com/isteam/ip/02276254-8ba8-4df3-8f97-ea09be83c9ab/2win%20web%20logo%20-%20white%20transp-0001.png/:/rs=w:188,h:75,cg:true,m/cr=w:188,h:75/qt=q:100/ll" alt="2win Realty" srcset="" height="100%">
+    </div>
+    
+    <!-- -------------- -->
+    <hr/>
+    <div class="flex-container">
+        <span class="loader brokage-iframe"></span>
+        <iframe id="brokage-iframe" name="brokage-iframe" src="" frameborder="0" height="300"></iframe>
+    </div>
+    <form class="flex-container" target="brokage-iframe" action="https://www.njmls.com/members/" method="get">
+        <input id="brokage-iframe-submit" type="submit" value="Fetch Office List" />
+    </form>
+    
+    <!-- -------------- -->
+    <hr/>
+    <div class="flex-container">
+        <span class="loader realtor-iframe"></span>
+        <iframe id="realtor-iframe" name="realtor-iframe" src="" frameborder="0"></iframe>
+    </div>
+    <form class="flex-container" target="realtor-iframe" action="https://www.njmls.com/members/" method="get">
+        <input type="submit" value="Fetch R" />
+    </form>
+    
+    <!-- -------------- -->
+    <script src="index.js"></script>
+</body>
+</html>
